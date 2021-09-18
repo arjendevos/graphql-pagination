@@ -1,0 +1,18 @@
+model Post {
+    id          String   @id @default(cuid())
+    title       String
+    description String
+    created_at  DateTime @default(now())
+    updated_at  DateTime @default(now()) @updatedAt
+
+    creator_account_id String
+    creator_account    Account @relation(name: "CreatorAccountToPost", fields: [creator_account_id], references: [id])
+
+    @@map("post")
+}
+
+model Account {
+    id String @id @default(cuid())
+
+    Post Post[] @relation("CreatorAccountToPost")
+}

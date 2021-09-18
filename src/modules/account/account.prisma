@@ -1,0 +1,14 @@
+model Account {
+    id            String   @id @default(cuid())
+    created_at    DateTime @default(now())
+    updated_at    DateTime @default(now()) @updatedAt
+    email         String   @unique
+    username      String   @unique
+    password_hash String?
+    verified      Boolean?
+
+    display_name String?
+    bio          String?
+
+    @@map("accounts")
+}
