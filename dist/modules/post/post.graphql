@@ -1,0 +1,48 @@
+scalar DateTime
+
+type Query {
+  getPostsOffsetPagination(limit: Int = 3, page: Int = 0): OffsetPaginatedPosts
+  getPostsCursorPagination(limit: Int = 3, cursor: String): CursorPaginatedPosts
+}
+
+# type Mutation {
+#   createAccount(email: String!, username: String!): Account
+# }
+
+type Post {
+  id: String!
+  title: String!
+  description: String!
+  creator_account_id: String
+
+  updated_at: DateTime!
+  created_at: DateTime!
+}
+
+type OffsetPaginatedPosts {
+  nodes: [Post]
+  meta: OffsetPaginatedPostsMeta
+}
+
+type OffsetPaginatedPostsMeta {
+  nodeCount: Int!
+  pageCount: Int!
+  pageCurrent: Int!
+  nodesPerPage: Int!
+}
+
+type CursorPaginatedPosts {
+  status: String!
+  message: String
+  node: CursorPaginatedPostsNode
+}
+
+type CursorPaginatedPostsNode {
+  edges: [Post]
+  page_info: CursorPaginatedPostsPageInfo
+}
+
+type CursorPaginatedPostsPageInfo {
+  end_cursor: String
+  has_next_page: Boolean
+}

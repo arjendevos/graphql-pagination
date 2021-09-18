@@ -28,7 +28,7 @@ export const PostResolvers: Resolvers<Context> = {
       args: getPostsOffsetPaginationArgs,
       context
     ) => {
-      if (!context.account_id) throw new AuthenticationError("invalid_token");
+      if (!context?.account_id) throw new AuthenticationError("invalid_token");
 
       const { limit, page } = args;
       const where = {
@@ -78,7 +78,7 @@ export const PostResolvers: Resolvers<Context> = {
       args: getPostsCursorPaginationArgs,
       context
     ) => {
-      if (!context.account_id) throw new AuthenticationError("invalid_token");
+      if (!context?.account_id) throw new AuthenticationError("invalid_token");
 
       try {
         const { limit, cursor } = args;

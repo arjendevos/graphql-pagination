@@ -1,11 +1,7 @@
 {
   "mixers": [
     {
-      "input": [
-        "./prisma/datasource.prisma",
-        "./src/modules/account/account.prisma",
-        "./src/modules/post/post.prisma"
-      ],
+      "input": ["./prisma/datasource.prisma", "./src/modules/**/**.prisma"],
       "output": "./prisma/schema.prisma"
     }
   ]

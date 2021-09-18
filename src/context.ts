@@ -1,7 +1,5 @@
-import { Account } from "@prisma/client";
 import { config, Depromisify } from "./utils";
 import * as jwt from "jsonwebtoken";
-import { db } from "./database";
 
 export interface ResolverContext {
   is_authed: boolean;

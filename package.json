@@ -8,7 +8,10 @@
     "prisma:generate": "npx prisma generate",
     "prisma:migrate": "npx prisma migrate dev",
     "prisma": "yarn prismix && yarn prisma:generate && yarn prisma:migrate",
-    "dev": "concurrently \"ts-node-dev --no-notify --respawn --transpile-only src/server\" \"yarn generate --watch\" "
+    "dev": "concurrently \"ts-node-dev --no-notify --respawn --transpile-only src/server\" \"yarn generate --watch\" ",
+    "clean": "rm -rf dist",
+    "build": "yarn clean && yarn generate && tsc",
+    "start": "node dist/server"
   },
   "author": "Arjen de Vos",
   "license": "MIT",
